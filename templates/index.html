@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>签到小游戏</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="game">
+        <h1>签到小游戏</h1>
+        <p>{{ question }}</p>
+        <form id="quiz-form">
+            {% for option, text in options.items() %}
+            <div>
+                <input type="radio" id="{{ option }}" name="answer" value="{{ option }}">
+                <label for="{{ option }}">{{ option }}. {{ text }}</label><br>
+            </div>
+            {% endfor %}
+            <input type="text" id="name" placeholder="输入你的名字">
+            <button type="button" onclick="submitAnswer()">提交答案</button>
+        </form>
+        <div id="feedback"></div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
